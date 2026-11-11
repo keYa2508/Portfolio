@@ -1,69 +1,118 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import SpotlightCanvas from "@/components/SpotlightCanvas";
+import InteractiveLabs from "@/components/InteractiveLabs";
+import MobileAppShowcase from "@/components/MobileAppShowcase";
+import Projects from "@/components/Projects";
+import DeveloperTerminal from "@/components/DeveloperTerminal";
+import Experience from "@/components/Experience";
+import Skills from "@/components/Skills";
+import Education from "@/components/Education";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import ResumeModal from "@/components/ResumeModal";
+import QuickNavModal from "@/components/QuickNavModal";
+import { playClickSound } from "@/lib/soundEffects";
+import { Search } from "lucide-react";
 
 export default function Home() {
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const [quickNavOpen, setQuickNavOpen] = useState(false);
+  const [accentColor, setAccentColor] = useState("cyan");
+
+  // Keyboard shortcut for Cmd+K / Ctrl+K
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setQuickNavOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen flex flex-col bg-[#070a12] text-slate-100 relative selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* Dynamic Cursor Spotlight & Floating Particle Field */}
+      <SpotlightCanvas accentColor={accentColor} />
+
+      {/* Top Navigation */}
+      <Navbar
+        onOpenResume={() => setResumeOpen(true)}
+        accentColor={accentColor}
+        setAccentColor={setAccentColor}
+      />
+
+      {/* Main Content Sections */}
+      <main className="flex-1 relative z-10">
+        {/* 1. Hero Section with 3D Tilt Portrait, Floating Orbits & Stats */}
+        <Hero
+          onOpenResume={() => setResumeOpen(true)}
+          accentColor={accentColor}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* 2. Interactive Engineering Labs (Trading Stream Simulator & AI RAG Assistant) */}
+        <InteractiveLabs />
+
+        {/* 3. Interactive React Native Smartphone Simulator */}
+        <MobileAppShowcase />
+
+        {/* 4. Featured Production Projects & Case Studies */}
+        <Projects />
+
+        {/* 5. Interactive Developer Terminal CLI */}
+        <DeveloperTerminal />
+
+        {/* 6. Professional Work Experience Timeline */}
+        <Experience />
+
+        {/* 7. Comprehensive Skills & Frameworks Matrix */}
+        <Skills />
+
+        {/* 8. Education & Academic Foundations */}
+        <Education />
+
+        {/* 9. Interactive Contact Section & Confetti Form */}
+        <Contact />
       </main>
+
+      {/* Footer */}
+      <Footer onOpenResume={() => setResumeOpen(true)} />
+
+      {/* Floating Action Pill: Quick Search / Cmd+K Helper */}
+      <div className="fixed bottom-5 right-5 z-40 flex items-center gap-2">
+        <button
+          onClick={() => {
+            playClickSound();
+            setQuickNavOpen(true);
+          }}
+          className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-900/90 border border-white/15 text-slate-300 hover:text-white hover:border-cyan-400 shadow-2xl backdrop-blur-xl transition-all duration-300 group hover:scale-105"
+          title="Quick Navigation (Cmd+K)"
+        >
+          <Search className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+          <span className="text-xs font-medium hidden sm:inline">Search & Jump</span>
+          <kbd className="hidden sm:inline text-[10px] font-mono bg-white/10 px-1.5 py-0.5 rounded text-slate-400">
+            ⌘K
+          </kbd>
+        </button>
+      </div>
+
+      {/* Interactive Resume View & Print Modal */}
+      <ResumeModal
+        isOpen={resumeOpen}
+        onClose={() => setResumeOpen(false)}
+      />
+
+      {/* Quick Nav Command Menu */}
+      <QuickNavModal
+        isOpen={quickNavOpen}
+        onClose={() => setQuickNavOpen(false)}
+        onOpenResume={() => setResumeOpen(true)}
+      />
     </div>
   );
 }
