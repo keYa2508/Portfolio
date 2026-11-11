@@ -63,7 +63,8 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
 
   const handleMouseLeave = () => {
     setTiltStyle({
-      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+      transform:
+        "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
     });
   };
 
@@ -102,7 +103,9 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
               </h1>
               {/* Dynamic Typewriter / Rotating Badge */}
               <div className="flex items-center gap-2 pt-2 min-h-[44px]">
-                <span className="text-xl sm:text-2xl font-bold text-slate-400">I build as a</span>
+                <span className="text-xl sm:text-2xl font-bold text-slate-400">
+                  I build as a
+                </span>
                 <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent underline decoration-cyan-500/40 underline-offset-4 animate-in fade-in duration-500 key={roleIndex}">
                   {rotatingRoles[roleIndex]}
                 </span>
@@ -112,10 +115,22 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
             {/* Impact Pitch */}
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
               Full Stack & Cross-Platform Engineer with{" "}
-              <span className="text-white font-semibold">3+ years of experience</span> developing
-              high-frequency <span className="text-cyan-300 font-medium">cryptocurrency & Indian stock trading platforms</span>,
-              enterprise <span className="text-indigo-300 font-medium">ERP & marketing automation platforms</span>,
-              and intelligent <span className="text-emerald-300 font-medium">AI RAG chatbots</span>.
+              <span className="text-white font-semibold">
+                3+ years of experience
+              </span>{" "}
+              developing high-frequency{" "}
+              <span className="text-cyan-300 font-medium">
+                cryptocurrency & Indian stock trading platforms
+              </span>
+              , enterprise{" "}
+              <span className="text-indigo-300 font-medium">
+                ERP & marketing automation platforms
+              </span>
+              , and intelligent{" "}
+              <span className="text-emerald-300 font-medium">
+                AI RAG chatbots
+              </span>
+              .
             </p>
 
             {/* Contact Micro-pills */}
@@ -193,7 +208,7 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
               {/* Photo Container */}
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-950 border border-white/10 flex flex-col justify-end">
                 <Image
-                  src="/karthik.jpg"
+                  src="/profile.png"
                   alt="Karthikeyan Manikandan"
                   fill
                   className="object-cover object-center filter saturate-[1.05] contrast-[1.02] group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -222,9 +237,12 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
 
                   <div className="mt-3 flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/5">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-cyan-400" /> Chennai, India
+                      <MapPin className="w-3 h-3 text-cyan-400" /> Chennai,
+                      India
                     </span>
-                    <span className="text-slate-300 font-mono">React • React Native</span>
+                    <span className="text-slate-300 font-mono">
+                      React • React Native
+                    </span>
                   </div>
                 </div>
               </div>
@@ -233,7 +251,9 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
               {/* Badge 1: Top Right - React Native */}
               <div className="absolute -top-4 -right-4 px-3 py-1.5 rounded-xl bg-slate-900/95 border border-cyan-400/40 shadow-xl shadow-cyan-500/20 backdrop-blur-md flex items-center gap-2 animate-float">
                 <Smartphone className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-semibold text-white">React Native</span>
+                <span className="text-xs font-semibold text-white">
+                  React Native
+                </span>
               </div>
 
               {/* Badge 2: Mid Left - Socket.IO */}
@@ -242,7 +262,9 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
                 style={{ animationDelay: "1.5s" }}
               >
                 <Zap className="w-4 h-4 text-emerald-400" />
-                <span className="text-xs font-semibold text-white">Socket.IO & Ticker</span>
+                <span className="text-xs font-semibold text-white">
+                  Socket.IO & Ticker
+                </span>
               </div>
 
               {/* Badge 3: Bottom Left - AI RAG */}
@@ -251,7 +273,9 @@ export default function Hero({ onOpenResume, accentColor }: HeroProps) {
                 style={{ animationDelay: "2.5s" }}
               >
                 <Bot className="w-4 h-4 text-purple-400" />
-                <span className="text-xs font-semibold text-white">AI RAG & FastAPI</span>
+                <span className="text-xs font-semibold text-white">
+                  AI RAG & FastAPI
+                </span>
               </div>
             </div>
           </div>

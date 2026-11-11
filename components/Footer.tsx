@@ -29,7 +29,7 @@ export default function Footer({ onOpenResume }: { onOpenResume: () => void }) {
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-xl overflow-hidden ring-2 ring-cyan-500/40 p-0.5 bg-gradient-to-tr from-cyan-500 to-indigo-500">
                 <Image
-                  src="/karthik.jpg"
+                  src="/profile.png"
                   alt="Karthikeyan Manikandan"
                   width={40}
                   height={40}
@@ -37,14 +37,19 @@ export default function Footer({ onOpenResume }: { onOpenResume: () => void }) {
                 />
               </div>
               <div>
-                <h3 className="font-bold text-white text-base">Karthikeyan Manikandan</h3>
-                <p className="text-xs text-cyan-400 font-medium">Full Stack & Mobile Developer</p>
+                <h3 className="font-bold text-white text-base">
+                  Karthikeyan Manikandan
+                </h3>
+                <p className="text-xs text-cyan-400 font-medium">
+                  Full Stack & Mobile Developer
+                </p>
               </div>
             </div>
 
             <p className="text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
-              Crafting high-performance real-time trading interfaces, enterprise ERP platforms, and
-              scalable mobile applications with React Native and modern web technologies.
+              Crafting high-performance real-time trading interfaces, enterprise
+              ERP platforms, and scalable mobile applications with React Native
+              and modern web technologies.
             </p>
 
             <div className="flex items-center gap-2 text-xs text-emerald-400">
@@ -158,9 +163,7 @@ export default function Footer({ onOpenResume }: { onOpenResume: () => void }) {
 
         {/* Bottom row */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>
-            © 2026 Karthikeyan Manikandan. All rights reserved.
-          </p>
+          <p>© 2026 Karthikeyan Manikandan. All rights reserved.</p>
 
           <div className="flex items-center gap-4">
             <span className="text-[11px] text-slate-500">

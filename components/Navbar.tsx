@@ -3,7 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { personalInfo } from "@/data/portfolioData";
-import { playClickSound, toggleSound, isSoundEnabled } from "@/lib/soundEffects";
+import {
+  playClickSound,
+  toggleSound,
+  isSoundEnabled,
+} from "@/lib/soundEffects";
 import {
   Menu,
   X,
@@ -24,13 +28,37 @@ interface NavbarProps {
 }
 
 export const accents = [
-  { id: "cyan", name: "Cyan Cyber", primary: "#38bdf8", glow: "rgba(56, 189, 248, 0.4)" },
-  { id: "emerald", name: "Emerald Pro", primary: "#10b981", glow: "rgba(16, 185, 129, 0.4)" },
-  { id: "purple", name: "Violet Nebula", primary: "#a855f7", glow: "rgba(168, 85, 247, 0.4)" },
-  { id: "amber", name: "Amber Gold", primary: "#f59e0b", glow: "rgba(245, 158, 11, 0.4)" },
+  {
+    id: "cyan",
+    name: "Cyan Cyber",
+    primary: "#38bdf8",
+    glow: "rgba(56, 189, 248, 0.4)",
+  },
+  {
+    id: "emerald",
+    name: "Emerald Pro",
+    primary: "#10b981",
+    glow: "rgba(16, 185, 129, 0.4)",
+  },
+  {
+    id: "purple",
+    name: "Violet Nebula",
+    primary: "#a855f7",
+    glow: "rgba(168, 85, 247, 0.4)",
+  },
+  {
+    id: "amber",
+    name: "Amber Gold",
+    primary: "#f59e0b",
+    glow: "rgba(245, 158, 11, 0.4)",
+  },
 ];
 
-export default function Navbar({ onOpenResume, accentColor, setAccentColor }: NavbarProps) {
+export default function Navbar({
+  onOpenResume,
+  accentColor,
+  setAccentColor,
+}: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [soundActive, setSoundActive] = useState(true);
@@ -78,7 +106,7 @@ export default function Navbar({ onOpenResume, accentColor, setAccentColor }: Na
           >
             <div className="relative w-10 h-10 rounded-xl overflow-hidden ring-2 ring-cyan-500/40 p-0.5 bg-gradient-to-tr from-cyan-500 to-indigo-500 transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/karthik.jpg"
+                src="/profile.png"
                 alt="Karthikeyan Manikandan"
                 width={40}
                 height={40}
@@ -96,7 +124,9 @@ export default function Navbar({ onOpenResume, accentColor, setAccentColor }: Na
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
               </div>
-              <p className="text-xs text-slate-400 hidden sm:block">Full Stack & Mobile Dev</p>
+              <p className="text-xs text-slate-400 hidden sm:block">
+                Full Stack & Mobile Dev
+              </p>
             </div>
           </a>
 
@@ -162,7 +192,11 @@ export default function Navbar({ onOpenResume, accentColor, setAccentColor }: Na
             {/* Sound Toggle */}
             <button
               onClick={handleSoundToggle}
-              title={soundActive ? "Mute interactive audio" : "Enable interactive audio"}
+              title={
+                soundActive
+                  ? "Mute interactive audio"
+                  : "Enable interactive audio"
+              }
               className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/[0.06] transition-colors border border-transparent hover:border-white/10 hidden sm:flex"
             >
               {soundActive ? (
@@ -204,7 +238,11 @@ export default function Navbar({ onOpenResume, accentColor, setAccentColor }: Na
               }}
               className="p-2 text-slate-400 hover:text-white lg:hidden rounded-lg hover:bg-white/[0.06]"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
